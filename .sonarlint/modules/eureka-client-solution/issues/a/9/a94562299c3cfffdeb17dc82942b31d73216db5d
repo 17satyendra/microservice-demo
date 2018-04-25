@@ -1,0 +1,6 @@
+
+rsquid:S1155">Use isEmpty() to check whether the collection is empty or not.(•ñ¥À8Ô¤Ê±¯,HäRMINORZ
+CODE_SMELL
+—squid:UselessImportCheck
+"QRemove this unused import 'org.springframework.web.bind.annotation.ResponseBody'.(•¶¶êøÿÿÿÿ8ëý•¯¯,HÉRMINORZ
+CODE_SMELL
