@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: adjective-service
+server:
+  port: 8006

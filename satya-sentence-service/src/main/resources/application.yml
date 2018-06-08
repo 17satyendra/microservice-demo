@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: sentence-service
+  
+server:
+  port: 8008
