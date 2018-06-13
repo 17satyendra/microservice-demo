@@ -1,0 +1,33 @@
+zuul:
+  prefix: /services
+  routes:
+    sentence:
+      path: /sen/**
+      service-id: SENTENCE-SERVICE
+      #url:  http://localhost:8008
+    subject:
+      path: /subject/**
+      service-id: SUBJECT-SERVICE
+    article:
+      path: /article/**
+      service-id: ARTICLE-SERVICE
+    adjective:
+      path: /adjective/**
+      service-id: ADJECTIVE-SERVICE
+    verb:
+      path: /verb/**
+      service-id: VERB-SERVICE 
+    noun: 
+      path: /noun/**
+      service-id: NOUN-SERVICE
+  host:
+    socket-timeout-millis: 60000
+    connection-request-timeout-millis: 60000 
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 60000

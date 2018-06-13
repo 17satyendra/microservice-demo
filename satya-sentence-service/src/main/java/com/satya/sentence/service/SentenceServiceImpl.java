@@ -3,20 +3,11 @@ package com.satya.sentence.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.satya.sentence.dao.AdjectiveDao;
-import com.satya.sentence.dao.ArticleDao;
-import com.satya.sentence.dao.NounDao;
-import com.satya.sentence.dao.SubjectDao;
-import com.satya.sentence.dao.VerbDao;
-
 @Service
 public class SentenceServiceImpl implements SentenceService 
 {
-	private VerbDao verbDao;
-	private SubjectDao subjectDao;
-	private ArticleDao articleDao;
-	private AdjectiveDao adjectiveDao;
-	private NounDao nounDao;
+	@Autowired
+	private WordService wordService;
 	
 	@Override
 	public String buildSentence() 
@@ -24,31 +15,13 @@ public class SentenceServiceImpl implements SentenceService
 		String sentence = "There was a problem assembling the sentence!";
 		sentence =  
 			String.format("%s %s %s %s %s.",
-				subjectDao.getWord(),
-				verbDao.getWord(),
-				articleDao.getWord(),
-				adjectiveDao.getWord(),
-				nounDao.getWord() );
+				wordService.getSubject().getWord(),
+				wordService.getVerb().getWord(),
+				wordService.getArticle().getWord(),
+				wordService.getAdjective().getWord(),
+				wordService.getNoun().getWord()
+				);
 		return sentence;
 	}
-	@Autowired
-	public void setVerbDao(VerbDao verbDao) {
-		this.verbDao = verbDao;
-	}
-	@Autowired
-	public void setSubjectDao(SubjectDao subjectDao) {
-		this.subjectDao = subjectDao;
-	}
-	@Autowired
-	public void setArticleDao(ArticleDao articleDao) {
-		this.articleDao = articleDao;
-	}
-	@Autowired
-	public void setAdjectiveDao(AdjectiveDao adjectiveDao) {
-		this.adjectiveDao = adjectiveDao;
-	}
-	@Autowired
-	public void setNounDao(NounDao nounDao) {
-		this.nounDao = nounDao;
-	}
+	
 }

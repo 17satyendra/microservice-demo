@@ -9,5 +9,5 @@ import com.satya.sentence.model.Word;
 public interface NounDao 
 {
 	@GetMapping("/")
-	public String getWord();
+	public Word getWord();
 }

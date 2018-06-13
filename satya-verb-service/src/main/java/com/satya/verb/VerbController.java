@@ -1,6 +1,11 @@
 package com.satya.verb;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,12 +15,14 @@ public class VerbController
 	@Value("${words}")
 	private String words;
 
-	@GetMapping("/")
-	public String getWord() 
+	@GetMapping(value = "/", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Word> getWord(HttpServletRequest req) 
 	{
+		String value = (String) req.getAttribute("Hello");
 		String[] wordArray = words.split(",");
 		int i = (int) Math.round(Math.random() * (wordArray.length - 1));
-		return wordArray[i];
+		Word word = new Word();
+		word.setWord(value);
+		return new ResponseEntity<>(word, HttpStatus.OK);
 	}
-
 }

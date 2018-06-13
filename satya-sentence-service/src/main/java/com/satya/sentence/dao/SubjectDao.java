@@ -9,5 +9,5 @@ import com.satya.sentence.model.Word;
 public interface SubjectDao 
 {
 	@GetMapping("/")
-	public String getWord();
+	public Word getWord();
 }
